@@ -2,7 +2,7 @@
     Euler method spring solver.
 ]]
 
-local PRECISION = 1e-4
+local PRECISION = 1e-2
 
 return function(position, velocity, goal, stiffness, damping, dt)
     local distance = position - goal
@@ -15,8 +15,8 @@ return function(position, velocity, goal, stiffness, damping, dt)
     local newVelocity = velocity + acceleration * dt
     local newPosition = position + newVelocity * dt
 
-    if math.abs(position - newPosition) < PRECISION and math.abs(newVelocity - velocity) < PRECISION then
-        return position, 0
+    if math.abs(newPosition - goal) < PRECISION and math.abs(newVelocity - velocity) < PRECISION then
+        return goal, 0
     else
         return newPosition, newVelocity
     end
