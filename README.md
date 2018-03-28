@@ -12,11 +12,12 @@ Prior work:
 
 - [x] Actually write code instead of a readme
 - [x] Spring helper function / constructor
-- [ ] Basic Motion component
+- [x] Basic Motion component
 - [ ] Support non-number types
 - [ ] Spring presets
 - [ ] StaggeredMotion component
 - [ ] TransitionMotion component
+- [ ] Document
 - [ ] Squash the bugs that will be missed
 - [ ] ???
 - [ ] Release
