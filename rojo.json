@@ -1,0 +1,22 @@
+{
+    "name": "RoactMotion",
+    "servePort": 8000,
+    "partitions": {
+        "Roact": {
+            "path": "lib/Roact/lib",
+            "target": "ReplicatedStorage.Roact"
+        },
+        "PropTypes": {
+            "path": "lib/PropTypes/src",
+            "target": "ReplicatedStorage.PropTypes"
+        },
+        "lib": {
+            "path": "src/",
+            "target": "ReplicatedStorage.RoactMotion"
+        },
+        "demo": {
+            "path": "demo/",
+            "target": "StarterPlayer.StarterPlayerScripts.RoactMotionDemo"
+        }
+    }
+}
