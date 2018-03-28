@@ -10,9 +10,10 @@ Prior work:
 
 (in rough order)
 
-- [ ] Actually write code instead of a readme
-- [ ] Spring helper function / constructor
+- [x] Actually write code instead of a readme
+- [x] Spring helper function / constructor
 - [ ] Basic Motion component
+- [ ] Support non-number types
 - [ ] Spring presets
 - [ ] StaggeredMotion component
 - [ ] TransitionMotion component
