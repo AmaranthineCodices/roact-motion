@@ -1,0 +1,6 @@
+[submodule "lib/Roact"]
+	path = lib/Roact
+	url = https://github.com/Roblox/Roact
+[submodule "lib/PropTypes"]
+	path = lib/PropTypes
+	url = https://github.com/AmaranthineCodices/rbx-prop-types
