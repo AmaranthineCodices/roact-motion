@@ -14,9 +14,9 @@ Prior work:
 - [x] Spring helper function / constructor
 - [x] Basic Motion component
 - ~~[ ] Support non-number types~~
-- [ ] Spring presets
 - [ ] StaggeredMotion component
 - [ ] TransitionMotion component
+- [ ] Spring presets
 - [ ] Document
 - [ ] Squash the bugs that will be missed
 - [ ] ???
