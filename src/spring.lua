@@ -3,13 +3,12 @@
     Usage: spring(goal, stiffness, damping)
 ]]
 
-local DEFAULT_STIFFNESS = 170
-local DEFAULT_DAMPING = 26
+local Config = require(script.Parent.Config)
 
 return function(value, stiffness, damping)
     return {
         value = value,
-        stiffness = stiffness or DEFAULT_STIFFNESS,
-        damping = damping or DEFAULT_DAMPING,
+        stiffness = stiffness or Config.defaultStiffness,
+        damping = damping or Config.defaultDamping,
     }
 end

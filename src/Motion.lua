@@ -1,7 +1,5 @@
 local RunService = game:GetService("RunService")
 
-local STEP_RATE = 1 / 120
-
 local Roact = require(script.Parent.Parent.Roact)
 
 local merge = require(script.Parent.merge)
@@ -63,7 +61,7 @@ function Motion:didMount()
         local newValues = merge(self.state.values)
         local newVelocities = merge(self.state.velocities)
 
-        while self.accumulator > STEP_RATE do
+        while self.accumulator > Config.stepInterval do
             local reachedGoals = true
 
             for key, target in pairs(self.state.targets) do
@@ -79,7 +77,7 @@ function Motion:didMount()
                         target.value,
                         target.stiffness,
                         target.damping,
-                        STEP_RATE
+                        Config.stepInterval
                     )
                 end
 
@@ -91,7 +89,7 @@ function Motion:didMount()
                 newVelocities[key] = newVelocity
             end
 
-            self.accumulator = self.accumulator - STEP_RATE
+            self.accumulator = self.accumulator - Config.stepInterval
 
             if reachedGoals then
                 self.asleep = true

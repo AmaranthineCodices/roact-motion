@@ -1,7 +1,5 @@
 local RunService = game:GetService("RunService")
 
-local STEP_RATE = 1 / 120
-
 local Roact = require(script.Parent.Parent.Roact)
 
 local merge = require(script.Parent.merge)
@@ -72,7 +70,7 @@ function StaggeredMotion:didMount()
         local newValues = merge(self.state.values)
         local newVelocities = merge(self.state.velocities)
 
-        while self.accumulator > STEP_RATE do
+        while self.accumulator > Config.stepInterval do
             local reachedGoals = true
 
             for index, targets in ipairs(self.state.targets) do
@@ -92,7 +90,7 @@ function StaggeredMotion:didMount()
                             target.value,
                             target.stiffness,
                             target.damping,
-                            STEP_RATE
+                            Config.stepInterval
                         )
                     end
 
@@ -105,7 +103,7 @@ function StaggeredMotion:didMount()
                 end
             end
 
-            self.accumulator = self.accumulator - STEP_RATE
+            self.accumulator = self.accumulator - Config.stepInterval
 
             if reachedGoals then
                 self.asleep = true

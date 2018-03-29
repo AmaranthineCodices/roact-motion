@@ -2,7 +2,7 @@
     Euler method spring solver.
 ]]
 
-local PRECISION = 1e-6
+local Config = require(script.Parent.Config)
 
 return function(position, velocity, goal, stiffness, damping, dt)
     local distance = position - goal
@@ -15,7 +15,7 @@ return function(position, velocity, goal, stiffness, damping, dt)
     local newVelocity = velocity + acceleration * dt
     local newPosition = position + newVelocity * dt
 
-    if math.abs(newPosition - goal) < PRECISION and math.abs(newVelocity - velocity) < PRECISION then
+    if math.abs(newPosition - goal) < Config.precision and math.abs(newVelocity - velocity) < Config.precision then
         return goal, 0
     else
         return newPosition, newVelocity
