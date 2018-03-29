@@ -79,9 +79,9 @@ function Motion:didMount()
 
                 newValues[key] = newValue
                 newVelocities[key] = newVelocity
-
-                self.accumulator = self.accumulator - STEP_RATE
             end
+
+            self.accumulator = self.accumulator - STEP_RATE
 
             if reachedGoals then
                 self.asleep = true
