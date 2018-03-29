@@ -19,7 +19,7 @@ function Motion:init(props)
     -- Velocities are initialized to 0
     local velocities = {}
 
-    for key, spring in pairs(props.style) do
+    for key, _ in pairs(props.style) do
         velocities[key] = 0
         values[key] = 0
     end
