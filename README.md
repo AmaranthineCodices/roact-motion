@@ -13,7 +13,7 @@ Prior work:
 - [x] Actually write code instead of a readme
 - [x] Spring helper function / constructor
 - [x] Basic Motion component
-- [ ] Support non-number types
+- ~~[ ] Support non-number types~~
 - [ ] Spring presets
 - [ ] StaggeredMotion component
 - [ ] TransitionMotion component
