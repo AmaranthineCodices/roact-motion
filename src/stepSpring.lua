@@ -2,7 +2,7 @@
     Euler method spring solver.
 ]]
 
-local PRECISION = 1e-2
+local PRECISION = 1e-6
 
 return function(position, velocity, goal, stiffness, damping, dt)
     local distance = position - goal
