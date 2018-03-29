@@ -7,6 +7,7 @@ local Roact = require(script.Parent.Parent.Roact)
 local merge = require(script.Parent.merge)
 local SpringHelper = require(script.Parent.SpringHelper)
 local stepSpring = require(script.Parent.stepSpring)
+local Config = require(script.Parent.Config)
 
 local StaggeredMotion = Roact.PureComponent:extend("StaggeredMotion")
 
@@ -56,6 +57,15 @@ function StaggeredMotion:didMount()
     self._renderConnection = RunService.RenderStepped:Connect(function(deltaTime)
         -- If the component is asleep, do nothing.
         if self.asleep then return end
+
+        if deltaTime > Config.maximumFrameTime then
+            warn(("Frame delta time is %f seconds (expected less than %f seconds) - the framerate has dropped."):format(
+                deltaTime,
+                Config.maximumFrameTime
+            ))
+
+            deltaTime = Config.maximumFrameTime
+        end
 
         self.accumulator = self.accumulator + deltaTime
 
