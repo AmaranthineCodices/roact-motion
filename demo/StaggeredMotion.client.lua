@@ -27,8 +27,8 @@ function DemoComponent:render()
                 end
             else
                 newStyles[1] = {
-                    x = RoactMotion.spring(self.state.mouseX),
-                    y = RoactMotion.spring(self.state.mouseY),
+                    x = RoactMotion.spring(self.state.mouseX, 120, 12),
+                    y = RoactMotion.spring(self.state.mouseY, 120, 12),
                 }
 
                 for i = 2, SQUARES do
@@ -65,17 +65,12 @@ end
 
 function DemoComponent:didMount()
     local mouse = game.Players.LocalPlayer:GetMouse()
-    local lastMove = tick()
 
     mouse.Move:Connect(function()
-        -- if tick() - lastMove > 1 then
-            self:setState({
-                mouseX = mouse.X,
-                mouseY = mouse.Y,
-            })
-
-            lastMove = tick()
-        -- end
+        self:setState({
+            mouseX = mouse.X,
+            mouseY = mouse.Y,
+        })
     end)
 end
 
