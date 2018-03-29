@@ -22,7 +22,7 @@ function Motion:init(props)
 
     for key, spring in pairs(props.style) do
         velocities[key] = 0
-        values[key] = SpringHelper.getValue(spring)
+        values[key] = 0
     end
 
     -- If initial values are specified, use them
