@@ -33,8 +33,8 @@ function DemoComponent:render()
 
                 for i = 2, SQUARES do
                     newStyles[i] = {
-                        x = previous[i - 1].x,
-                        y = previous[i - 1].y,
+                        x = RoactMotion.spring(previous[i - 1].x, 120, 12),
+                        y = RoactMotion.spring(previous[i - 1].y, 120, 12),
                     }
                 end
             end
