@@ -106,6 +106,10 @@ function StaggeredMotion:didMount()
             self.accumulator = self.accumulator - Config.stepInterval
 
             if reachedGoals then
+                if self.props.onResting then
+                    self.props.onResting(newValues)
+                end
+
                 self.asleep = true
                 break
             end
