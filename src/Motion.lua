@@ -34,7 +34,6 @@ function Motion:init(props)
     self.state = {
         values = values,
         velocities = velocities,
-        targets = props.style,
     }
 end
 
@@ -64,7 +63,7 @@ function Motion:didMount()
         while self.accumulator > Config.stepInterval do
             local reachedGoals = true
 
-            for key, target in pairs(self.state.targets) do
+            for key, target in pairs(self.props.style) do
                 local newValue, newVelocity
 
                 if typeof(target) == "number" then
@@ -92,10 +91,6 @@ function Motion:didMount()
             self.accumulator = self.accumulator - Config.stepInterval
 
             if reachedGoals then
-                if self.props.onResting then
-                    self.props.onResting(newValues)
-                end
-
                 self.asleep = true
                 break
             end
@@ -105,6 +100,10 @@ function Motion:didMount()
             velocities = newVelocities,
             values = newValues,
         })
+
+        if self.asleep and self.props.onResting then
+            self.props.onResting(newValues)
+        end
     end)
 end
 
