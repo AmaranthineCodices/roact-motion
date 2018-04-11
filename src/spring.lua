@@ -6,7 +6,7 @@
 local Config = require(script.Parent.Config)
 
 return function(value, stiffness, damping)
-    if damping <= 0 then
+    if damping and damping <= 0 then
         warn(("damping is %f - this spring will oscillate indefinitely! Traceback:\n%s"):format(
             damping,
             debug.traceback()
