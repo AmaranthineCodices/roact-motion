@@ -11,7 +11,8 @@ local Motion = Roact.PureComponent:extend("Motion")
 
 function Motion:init(props)
     -- If the Motion is asleep it does not update
-    self.asleep = false
+    -- Start the motion in this state; we'll change it later if necessary.
+    self.asleep = true
     -- Used for rate-limiting spring steps
     self.accumulator = 0
     -- Set up the values table with the initial values (if given) or 0
@@ -28,6 +29,16 @@ function Motion:init(props)
     if props.initialValues then
         for key, value in pairs(props.initialValues) do
             values[key] = value
+        end
+    end
+
+    -- Wake up the Motion if necessary
+    for key, value in pairs(values) do
+        -- If the current value differs from the goal value the Motion is not
+        -- at rest initially, and should not start off asleep.
+        if value ~= SpringHelper.getValue(props.style[key]) then
+            self.asleep = false
+            break
         end
     end
 
@@ -117,13 +128,15 @@ function Motion:didUpdate(lastProps, lastState)
 
     -- If the styles are different, an animation needs to be performed.
     if lastProps.style ~= self.props.style then
-        -- Kick off a re-render.
-        self:setState({
-            targets = self.props.style,
-        })
+        -- Make sure there's actually work to do here!
+        for key, target in pairs(self.props.style) do
+            local currentValue = self.state.values[key]
 
-        -- Wake up the Motion so that it can animate.
-        self.asleep = false
+            if currentValue ~= SpringHelper.getValue(target) then
+                self.asleep = false
+                break
+            end
+        end
     end
 end
 
